@@ -1,0 +1,184 @@
+1)Controlled Function
+*****************************************************************************************************************
+ControllerFunction.jsx
+***************************************************************************************************************
+import React from 'react'
+import "./Controllerfunction.css";
+
+const Controllerfunction = () => {
+    
+  return (
+    <div>
+        <form id="form_card" action="">
+            <fieldset>
+                <legend>
+                    Sign Up:-
+                </legend>
+                <label htmlFor="">Username :</label>
+                <input type="text"></input>
+                <label htmlFor="">Email :</label>
+                <input type="email"></input>
+                <label htmlFor="">Password :</label>
+                <input type="password"></input>
+                <label htmlFor="">Confirm Password :</label>
+                <input type="password"></input>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+  )
+}
+
+export default Controllerfunction
+
+********************************************************************************************************************
+2)uncontrolledFunction 
+*********************************************************************************************************************
+import React, { useRef } from 'react'
+import "../Controlled/Controllerfunction.css";
+
+const Uncontrolledfunction = () => {
+    let nameRef=useRef();
+    let emailRef=useRef();
+    let passwordRef=useRef();
+    let confirmpassRef=useRef();
+    
+    let handledata=(e)=>{
+        e.preventDefault();
+        //console.log(nameref);
+
+        let name=nameRef.current.value;
+        let email=emailRef.current.value;
+        let pass=passwordRef.current.value;
+        let cpass=confirmpassRef.current.value;
+        if(pass===cpass){
+            console.log(name,email,pass)
+        }
+    }
+return (
+    <div>
+        <form id="form_card" action="" onSubmit={handledata}>
+            <fieldset>
+                <legend>
+                    Sign Up:-
+                </legend>
+                <label htmlFor="">Username :</label>
+                <input type="text" ref={nameRef}></input>
+                <label htmlFor="">Email :</label>
+                <input type="email" ref={emailRef}></input>
+                <label htmlFor="">Password :</label>
+                <input type="password" ref={passwordRef}></input>
+                <label htmlFor="">Confirm Password :</label>
+                <input type="password" ref={confirmpassRef}></input>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+)
+}
+
+export default Uncontrolledfunction
+*******************************************************************************************************************
+3)UncontrolledClass
+********************************************************************************************************************
+import React,{Component,createRef} from 'react';
+import "../Controlled/Controllerfunction.css";
+
+class  UnControlledClass extends Component{
+    nameRef=createRef();
+    emailRef=createRef();
+    passwordRef=createRef();
+    confirmpasswordRef=createRef();
+
+    handledata=(e)=>{
+        e.preventDefault();
+        let name=this.nameRef.current.value;
+        let email=this.emailRef.current.value;
+        let pass=this.passwordRef.current.value;
+        let cpass=this.confirmpasswordRef.current.value;
+        if(pass===cpass){
+            console.log(name,email,pass);           
+        }
+    }
+
+    render(){
+    return (
+    <div>
+        <form id="form_card" action="" onSubmit={this.handledata}>
+            <fieldset>
+                <legend>
+                    Sign Up:-
+                </legend>
+                <label htmlFor="">Username :</label>
+                <input type="text" ref={this.nameRef}></input>
+                <label htmlFor="">Email :</label>
+                <input type="email" ref={this.emailRef}></input>
+                <label htmlFor="">Password :</label>
+                <input type="password" ref={this.passwordRef}></input>
+                <label htmlFor="">Confirm Password :</label>
+                <input type="password" ref={this.confirmpasswordRef}></input>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>        
+    </div>
+)
+}
+}
+export default UnControlledClass
+**************************************************************************************************************
+4)Css Style
+*****************************************************************************************************************
+*{
+    margin:0;
+    padding:0;
+    font-family: cursive;
+    font-size: small;
+}
+form{
+    margin:20px;
+}
+button{
+    color:aliceblue;
+    background-color: rgb(47, 122, 56);
+    padding: 5px 10px;
+    font-size: 20px;
+    width:200px;
+    margin-bottom: 20px;
+}
+legend{
+    color:black;
+    background-color: aqua;
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid red;
+    border-radius:10px;
+    margin:20px;
+}
+fieldset{
+    margin:auto;    
+    width:600px;
+    height: 600px;
+    display: flex;
+    border-color: chartreuse;
+    border-radius: 20px 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+label{
+    font-size: 22px;
+    color:blue;
+    padding: 5px;
+}
+input{
+    border-color:aquamarine;
+    padding:5px;
+    margin: 10px auto;
+    display:flex;
+    flex-direction: column;
+    width:250px;
+    font-size: 20px;
+    height:60px;
+    color:red;
+    border-radius: 5px;
+}  
